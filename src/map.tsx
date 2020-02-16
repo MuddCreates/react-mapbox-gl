@@ -195,10 +195,10 @@ const ReactMapboxFactory = ({
       } = this.props;
 
       // tslint:disable-next-line:no-any
-      (MapboxGl as any).accessToken = accessToken;
+      (window.mapboxgl as any).accessToken = accessToken;
       if (apiUrl) {
         // tslint:disable-next-line:no-any
-        (MapboxGl as any).config.API_URL = apiUrl;
+        (window.mapboxgl as any).config.API_URL = apiUrl;
       }
 
       if (!Array.isArray(zoom)) {
@@ -261,7 +261,7 @@ const ReactMapboxFactory = ({
         opts.pitch = pitch[0];
       }
 
-      const map = new MapboxGl.Map(opts);
+      const map = new window.mapboxgl.Map(opts);
       this.setState({ map });
 
       if (fitBounds) {
